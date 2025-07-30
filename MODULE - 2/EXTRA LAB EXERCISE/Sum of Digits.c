@@ -1,22 +1,24 @@
 #include <stdio.h>
 
-int main() {
-    int num, sum = 0, reverse = 0, digit;
+int main()
+{
+    int inputNumber, digitSum = 0, reversedNumber = 0, currentDigit;
 
     printf("Enter an integer: ");
-    scanf("%d", &num);
+    scanf("%d", &inputNumber);
 
-    int original = num;  // Save original number
+    int originalNumber = inputNumber; // Save original number
 
-    while (num != 0) {
-        digit = num % 10;
-        sum += digit;
-        reverse = reverse * 10 + digit;
-        num /= 10;
+    while (inputNumber != 0)
+    {
+        currentDigit = inputNumber % 10;
+        digitSum += currentDigit;
+        reversedNumber = reversedNumber * 10 + currentDigit;
+        inputNumber /= 10;
     }
 
-    printf("Sum of digits of %d = %d\n", original, sum);
-    printf("Reversed number = %d\n", reverse);
+    printf("Sum of digits of %d = %d\n", originalNumber, digitSum);
+    printf("Reversed number = %d\n", reversedNumber);
 
     return 0;
 }

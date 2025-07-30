@@ -1,44 +1,50 @@
 #include <stdio.h>
 
 // Function to calculate length without using strlen
-int stringLength(char str[]) {
-    int length = 0;
-    while (str[length] != '\0') {
-        length++;
+int stringLength(char inputString[])
+{
+    int charCount = 0;
+    while (inputString[charCount] != '\0')
+    {
+        charCount++;
     }
-    return length;
+    return charCount;
 }
 
 // Function to reverse string without built-in functions
-void reverseString(char str[]) {
-    int length = stringLength(str);
-    int i;
-    char temp;
+void reverseString(char inputString[])
+{
+    int length = stringLength(inputString);
+    int index;
+    char tempChar;
 
-    for (i = 0; i < length / 2; i++) {
-        temp = str[i];
-        str[i] = str[length - i - 1];
-        str[length - i - 1] = temp;
+    for (index = 0; index < length / 2; index++)
+    {
+        tempChar = inputString[index];
+        inputString[index] = inputString[length - index - 1];
+        inputString[length - index - 1] = tempChar;
     }
 }
 
-int main() {
-    char str[100];
-    int i;
+int main()
+{
+    char userInput[100];
+    int charIndex;
 
     printf("Enter a string: ");
-    
+
     // Read input char by char until newline or EOF
-    i = 0;
-    char ch;
-    while ((ch = getchar()) != '\n' && ch != EOF && i < 99) {
-        str[i++] = ch;
+    charIndex = 0;
+    char currentChar;
+    while ((currentChar = getchar()) != '\n' && currentChar != EOF && charIndex < 99)
+    {
+        userInput[charIndex++] = currentChar;
     }
-    str[i] = '\0';
+    userInput[charIndex] = '\0';
 
-    reverseString(str);
+    reverseString(userInput);
 
-    printf("Reversed string: %s\n", str);
+    printf("Reversed string: %s\n", userInput);
 
     return 0;
 }

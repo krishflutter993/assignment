@@ -1,33 +1,38 @@
 #include <stdio.h>
 
 // Recursive function to calculate binomial coefficient C(n, k)
-int binomialCoeff(int n, int k) {
+int binomialCoefficient(int n, int k)
+{
     if (k == 0 || k == n)
         return 1;
-    return binomialCoeff(n - 1, k - 1) + binomialCoeff(n - 1, k);
+    return binomialCoefficient(n - 1, k - 1) + binomialCoefficient(n - 1, k);
 }
 
 // Function to generate Pascal’s Triangle using recursion
-void generatePascalRecursive(int rows) {
-    for (int i = 0; i < rows; i++) {
+void generatePascalsTriangle(int rows)
+{
+    for (int row = 0; row < rows; row++)
+    {
         // Print leading spaces
-        for (int space = 0; space < rows - i - 1; space++)
+        for (int spaceCount = 0; spaceCount < rows - row - 1; spaceCount++)
             printf("  ");
 
-        for (int j = 0; j <= i; j++) {
-            printf("%4d", binomialCoeff(i, j));
+        for (int col = 0; col <= row; col++)
+        {
+            printf("%4d", binomialCoefficient(row, col));
         }
         printf("\n");
     }
 }
 
-int main() {
-    int N;
+int main()
+{
+    int totalRows;
 
     printf("Enter the number of rows: ");
-    scanf("%d", &N);
+    scanf("%d", &totalRows);
 
-    generatePascalRecursive(N);
+    generatePascalsTriangle(totalRows);
 
     return 0;
 }

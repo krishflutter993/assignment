@@ -1,24 +1,27 @@
 #include <stdio.h>
 
-int main() {
-    int N, i, sum = 0;
+int main()
+{
+    int elementCount, index, sum = 0;
     float average;
 
     printf("Enter the number of elements: ");
-    scanf("%d", &N);
+    scanf("%d", &elementCount);
 
-    int arr[N];
+    int numbers[elementCount];
 
-    printf("Enter %d numbers:\n", N);
-    for(i = 0; i < N; i++) {
-        scanf("%d", &arr[i]);
+    printf("Enter %d numbers:\n", elementCount);
+    for (index = 0; index < elementCount; index++)
+    {
+        scanf("%d", &numbers[index]);
     }
 
-    for(i = 0; i < N; i++) {
-        sum += arr[i];
+    for (index = 0; index < elementCount; index++)
+    {
+        sum += numbers[index];
     }
 
-    average = (float)sum / N;
+    average = (float)sum / elementCount;
 
     printf("Sum of the array elements = %d\n", sum);
     printf("Average of the array elements = %.2f\n", average);

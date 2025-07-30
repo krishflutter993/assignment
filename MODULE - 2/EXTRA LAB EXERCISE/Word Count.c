@@ -2,63 +2,78 @@
 #include <string.h>
 #include <ctype.h>
 
-int countWords(char str[]) {
-    int count = 0, inWord = 0;
+int countWords(char inputString[])
+{
+    int wordCount = 0, insideWord = 0;
 
-    for (int i = 0; str[i] != '\0'; i++) {
-        if (!isspace(str[i])) {
-            if (!inWord) {
-                inWord = 1;
-                count++;
+    for (int charIndex = 0; inputString[charIndex] != '\0'; charIndex++)
+    {
+        if (!isspace(inputString[charIndex]))
+        {
+            if (!insideWord)
+            {
+                insideWord = 1;
+                wordCount++;
             }
-        } else {
-            inWord = 0;
+        }
+        else
+        {
+            insideWord = 0;
         }
     }
 
-    return count;
+    return wordCount;
 }
 
-void findLongestWord(char str[], char longest[]) {
-    int maxLen = 0, currLen = 0, i = 0, start = 0;
+void findLongestWord(char inputString[], char longestWord[])
+{
+    int maxWordLength = 0, currentWordLength = 0, charIndex = 0, wordStartIndex = 0;
 
-    while (str[i] != '\0') {
-        if (!isspace(str[i])) {
-            if (currLen == 0) start = i;
-            currLen++;
-        } else {
-            if (currLen > maxLen) {
-                maxLen = currLen;
-                strncpy(longest, &str[start], currLen);
-                longest[currLen] = '\0';
-            }
-            currLen = 0;
+    while (inputString[charIndex] != '\0')
+    {
+        if (!isspace(inputString[charIndex]))
+        {
+            if (currentWordLength == 0)
+                wordStartIndex = charIndex;
+            currentWordLength++;
         }
-        i++;
+        else
+        {
+            if (currentWordLength > maxWordLength)
+            {
+                maxWordLength = currentWordLength;
+                strncpy(longestWord, &inputString[wordStartIndex], currentWordLength);
+                longestWord[currentWordLength] = '\0';
+            }
+            currentWordLength = 0;
+        }
+        charIndex++;
     }
 
     // Check last word
-    if (currLen > maxLen) {
-        maxLen = currLen;
-        strncpy(longest, &str[start], currLen);
-        longest[currLen] = '\0';
+    if (currentWordLength > maxWordLength)
+    {
+        maxWordLength = currentWordLength;
+        strncpy(longestWord, &inputString[wordStartIndex], currentWordLength);
+        longestWord[currentWordLength] = '\0';
     }
 }
 
-int main() {
-    char sentence[200], longest[100];
+int main()
+{
+    char userSentence[200], longestWord[100];
 
     printf("Enter a sentence: ");
-    fgets(sentence, sizeof(sentence), stdin);
+    fgets(userSentence, sizeof(userSentence), stdin);
 
     // Remove newline if present
-    sentence[strcspn(sentence, "\n")] = '\0';
+    userSentence[strcspn(userSentence, "\n")] = '\0';
 
-    int wordCount = countWords(sentence);
-    findLongestWord(sentence, longest);
+    int totalWords = countWords(userSentence);
+    findLongestWord(userSentence, longestWord);
 
-    printf("Number of words: %d\n", wordCount);
-    printf("Longest word: %s\n", longest);
+    printf("Number of words: %d\n", totalWords);
+    printf("Longest word: %s\n", longestWord);
 
     return 0;
 }

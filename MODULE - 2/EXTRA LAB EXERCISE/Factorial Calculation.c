@@ -2,7 +2,8 @@
 #include <time.h>
 
 // Recursive factorial function
-unsigned long long factorial_recursive(int n) {
+unsigned long long factorial_recursive(int n)
+{
     if (n == 0 || n == 1)
         return 1;
     else
@@ -10,43 +11,46 @@ unsigned long long factorial_recursive(int n) {
 }
 
 // Iterative factorial function
-unsigned long long factorial_iterative(int n) {
+unsigned long long factorial_iterative(int n)
+{
     unsigned long long result = 1;
-    for (int i = 2; i <= n; i++) {
+    for (int i = 2; i <= n; i++)
+    {
         result *= i;
     }
     return result;
 }
 
-int main() {
-    int number;
+int main()
+{
+    int num;
     clock_t start, end;
-    double time_recursive, time_iterative;
+    double timeRecursive, timeIterative;
 
     printf("Enter a number to calculate factorial: ");
-    scanf("%d", &number);
+    scanf("%d", &num);
 
     // Measure recursive factorial time
     start = clock();
-    unsigned long long fact_rec = factorial_recursive(number);
+    unsigned long long factorialRec = factorial_recursive(num);
     end = clock();
-    time_recursive = ((double)(end - start)) / CLOCKS_PER_SEC;
+    timeRecursive = ((double)(end - start)) / CLOCKS_PER_SEC;
 
     // Measure iterative factorial time
     start = clock();
-    unsigned long long fact_itr = factorial_iterative(number);
+    unsigned long long factorialItr = factorial_iterative(num);
     end = clock();
-    time_iterative = ((double)(end - start)) / CLOCKS_PER_SEC;
+    timeIterative = ((double)(end - start)) / CLOCKS_PER_SEC;
 
-    printf("Factorial (recursive): %llu\n", fact_rec);
-    printf("Time taken (recursive): %f seconds\n", time_recursive);
+    printf("Factorial (recursive): %llu\n", factorialRec);
+    printf("Time taken (recursive): %f seconds\n", timeRecursive);
 
-    printf("Factorial (iterative): %llu\n", fact_itr);
-    printf("Time taken (iterative): %f seconds\n", time_iterative);
+    printf("Factorial (iterative): %llu\n", factorialItr);
+    printf("Time taken (iterative): %f seconds\n", timeIterative);
 
-    if (time_recursive > time_iterative)
+    if (timeRecursive > timeIterative)
         printf("Iterative method is faster.\n");
-    else if (time_recursive < time_iterative)
+    else if (timeRecursive < timeIterative)
         printf("Recursive method is faster.\n");
     else
         printf("Both methods have similar performance.\n");

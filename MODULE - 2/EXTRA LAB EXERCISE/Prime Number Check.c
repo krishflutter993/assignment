@@ -1,23 +1,27 @@
 #include <stdio.h>
 
-int main() {
-    int limit, i, j, isPrime;
+int main()
+{
+    int upperLimit, currentNumber, divisor, isPrimeFlag;
 
     printf("Enter a number to print all prime numbers up to it: ");
-    scanf("%d", &limit);
+    scanf("%d", &upperLimit);
 
-    printf("Prime numbers between 1 and %d are:\n", limit);
+    printf("Prime numbers between 1 and %d are:\n", upperLimit);
 
-    for (i = 2; i <= limit; i++) {
-        isPrime = 1;
-        for (j = 2; j <= i / 2; j++) {
-            if (i % j == 0) {
-                isPrime = 0;
+    for (currentNumber = 2; currentNumber <= upperLimit; currentNumber++)
+    {
+        isPrimeFlag = 1;
+        for (divisor = 2; divisor <= currentNumber / 2; divisor++)
+        {
+            if (currentNumber % divisor == 0)
+            {
+                isPrimeFlag = 0;
                 break;
             }
         }
-        if (isPrime)
-            printf("%d ", i);
+        if (isPrimeFlag)
+            printf("%d ", currentNumber);
     }
 
     printf("\n");
