@@ -4,38 +4,41 @@
 
 int main()
 {
-    int secretNumber, userGuess, attemptCount = 0, maxAttemptsAllowed = 10;
+    int secretNumber, guess, attempts = 0;
+    int maxAttempts = 7;
 
+    // Seed the random number generator
     srand(time(0));
-    secretNumber = (rand() % 100) + 1; // 1 to 100
+    secretNumber = rand() % 100 + 1; // Random number between 1 and 100
 
-    printf("Welcome to the Number Guessing Game!\n");
-    printf("Guess the number between 1 and 100. You have %d attempts.\n", maxAttemptsAllowed);
+    printf("🎮 Welcome to the Number Guessing Game!\n");
+    printf("Guess the number between 1 and 100. You have %d attempts.\n\n", maxAttempts);
 
-    while (attemptCount < maxAttemptsAllowed)
+    while (attempts < maxAttempts)
     {
-        printf("Attempt %d: Enter your guess: ", attemptCount + 1);
-        scanf("%d", &userGuess);
-        attemptCount++;
+        printf("Enter your guess: ");
+        scanf("%d", &guess);
 
-        if (userGuess == secretNumber)
+        attempts++;
+
+        if (guess == secretNumber)
         {
-            printf("🎉 Correct! You guessed the number in %d attempts.\n", attemptCount);
+            printf("🎉 Congratulations! You guessed the number in %d attempt(s).\n", attempts);
             break;
         }
-        else if (userGuess < secretNumber)
+        else if (guess < secretNumber)
         {
-            printf("Too low! Try a higher number.\n");
+            printf("Too low! Try again.\n");
         }
         else
         {
-            printf("Too high! Try a lower number.\n");
+            printf("Too high! Try again.\n");
         }
-    }
 
-    if (userGuess != secretNumber)
-    {
-        printf(" rong Out of attempts! The correct number was %d.\n", secretNumber);
+        if (attempts == maxAttempts)
+        {
+            printf("❌ You've used all %d attempts. The number was: %d\n", maxAttempts, secretNumber);
+        }
     }
 
     return 0;

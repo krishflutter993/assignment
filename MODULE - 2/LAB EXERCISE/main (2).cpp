@@ -5,7 +5,7 @@ Declare and use different data types (int, char, float) and display their values
 
 #define PI 3.14
 
-void main() // 2. Main function
+int main() // 2. Main function
 {
 	// 3. body of program
 	int age = 20;		 // variable of int type
@@ -27,5 +27,5 @@ void main() // 2. Main function
 	printf("\n Marks: %f", marks);
 	printf("\n Grade: %c", grade);
 
-	getch(); // 4.end of program
+	return 0; // 4.end of program
 }

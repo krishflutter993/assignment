@@ -1,45 +1,36 @@
 #include <stdio.h>
 #include <math.h>
 
-// Function to count digits
-int countDigits(int number)
-{
-    int digitCount = 0;
-    while (number != 0)
-    {
-        number /= 10;
-        digitCount++;
-    }
-    return digitCount;
-}
-
-// Function to check Armstrong number
-int isArmstrong(int number)
-{
-    int sum = 0, tempNumber = number, digit, power = countDigits(number);
-
-    while (tempNumber != 0)
-    {
-        digit = tempNumber % 10;
-        sum += pow(digit, power);
-        tempNumber /= 10;
-    }
-
-    return (sum == number);
-}
-
 int main()
 {
-    printf("Armstrong numbers between 1 and 1000:\n");
+    int num, originalNum, remainder, result = 0, n = 0;
 
-    for (int i = 1; i <= 1000; i++)
+    printf("Enter an integer: ");
+    scanf("%d", &num);
+
+    originalNum = num;
+
+    // Count number of digits
+    while (originalNum != 0)
     {
-        if (isArmstrong(i))
-        {
-            printf("%d ", i);
-        }
+        originalNum /= 10;
+        ++n;
     }
 
-    printf("\n");
+    originalNum = num;
+
+    // Calculate sum of nth power of digits
+    while (originalNum != 0)
+    {
+        remainder = originalNum % 10;
+        result += pow(remainder, n);
+        originalNum /= 10;
+    }
+
+    if (result == num)
+        printf("%d is an Armstrong number.\n", num);
+    else
+        printf("%d is not an Armstrong number.\n", num);
+
     return 0;
 }

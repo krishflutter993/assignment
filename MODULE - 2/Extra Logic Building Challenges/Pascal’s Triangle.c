@@ -1,38 +1,44 @@
 #include <stdio.h>
 
-// Recursive function to calculate binomial coefficient C(n, k)
-int binomialCoefficient(int n, int k)
+// Function to calculate factorial (iteratively)
+long long factorial(int n)
 {
-    if (k == 0 || k == n)
-        return 1;
-    return binomialCoefficient(n - 1, k - 1) + binomialCoefficient(n - 1, k);
+    long long fact = 1;
+    for (int i = 2; i <= n; i++)
+    {
+        fact *= i;
+    }
+    return fact;
 }
 
-// Function to generate Pascal’s Triangle using recursion
-void generatePascalsTriangle(int rows)
+// Function to calculate combination (nCr)
+long long combination(int n, int r)
 {
-    for (int row = 0; row < rows; row++)
-    {
-        // Print leading spaces
-        for (int spaceCount = 0; spaceCount < rows - row - 1; spaceCount++)
-            printf("  ");
-
-        for (int col = 0; col <= row; col++)
-        {
-            printf("%4d", binomialCoefficient(row, col));
-        }
-        printf("\n");
-    }
+    return factorial(n) / (factorial(r) * factorial(n - r));
 }
 
 int main()
 {
-    int totalRows;
+    int n;
 
-    printf("Enter the number of rows: ");
-    scanf("%d", &totalRows);
+    printf("Enter number of rows for Pascal's Triangle: ");
+    scanf("%d", &n);
 
-    generatePascalsTriangle(totalRows);
+    for (int i = 0; i < n; i++)
+    {
+        // Print leading spaces for triangle alignment
+        for (int space = 0; space < n - i - 1; space++)
+        {
+            printf("  ");
+        }
+
+        for (int j = 0; j <= i; j++)
+        {
+            printf("%4lld", combination(i, j));
+        }
+
+        printf("\n");
+    }
 
     return 0;
 }

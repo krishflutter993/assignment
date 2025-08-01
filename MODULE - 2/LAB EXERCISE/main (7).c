@@ -2,7 +2,6 @@
 Include function declaration, definition, and call. */
 
 #include <stdio.h>
-#include <conio.h>
 
 // Function declaration
 int factorial(int n);
@@ -14,9 +13,7 @@ int main()
     printf("Enter a positive integer: ");
     scanf("%d", &number);
 
-    /
-
-        if (number < 0)
+    if (number < 0)
     {
         printf("Factorial is not defined for negative numbers.\n");
     }
