@@ -1,48 +1,48 @@
 #include <iostream>
 using namespace std;
 
-// Define the Calculator class
-class Calculator
+class SimpleCalculator
 {
 public:
-    // Function to add two numbers
-    double add(double a, double b)
+    // Perform calculation based on operator
+    int calculate(int a, char op, int b)
     {
-        return a + b;
-    }
-
-    // Function to subtract two numbers
-    double subtract(double a, double b)
-    {
-        return a - b;
-    }
-
-    // Function to multiply two numbers
-    double multiply(double a, double b)
-    {
-        return a * b;
-    }
-
-    // Function to divide two numbers
-    double divide(double a, double b)
-    {
-        if (b == 0)
+        switch (op)
         {
-            cout << "Error: Division by zero is not allowed." << endl;
+        case '+':
+            return a + b;
+            break;
+
+        case '-':
+            return a - b;
+            break;
+
+        case '*':
+            return a * b;
+            break;
+
+        case '/':
+            if (b == 0)
+            {
+                cout << "Error: Division by zero is not allowed." << endl;
+                return 0;
+            }
+            return a / b;
+            break;
+
+        default:
+            cout << "Invalid operator!" << endl;
             return 0;
         }
-        return a / b;
     }
 };
 
 int main()
 {
-    Calculator calc; // Create an object of Calculator
-
-    double num1, num2;
+    SimpleCalculator c;
+    int num1, num2, ans;
     char op;
 
-    // Input
     cout << "Enter first number: ";
     cin >> num1;
 
@@ -52,30 +52,9 @@ int main()
     cout << "Enter second number: ";
     cin >> num2;
 
-    double result;
+    ans = c.calculate(num1, op, num2);
 
-    // Choose operation based on user input
-    switch (op)
-    {
-    case '+':
-        result = calc.add(num1, num2);
-        break;
-    case '-':
-        result = calc.subtract(num1, num2);
-        break;
-    case '*':
-        result = calc.multiply(num1, num2);
-        break;
-    case '/':
-        result = calc.divide(num1, num2);
-        break;
-    default:
-        cout << "Invalid operator!" << endl;
-        return 1;
-    }
-
-    // Output result
-    cout << "Result: " << result << endl;
+    cout << "Result: " << ans << endl;
 
     return 0;
 }

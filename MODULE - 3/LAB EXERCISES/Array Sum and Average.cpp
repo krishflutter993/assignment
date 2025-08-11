@@ -3,36 +3,20 @@ using namespace std;
 
 int main()
 {
-    const int SIZE = 100;
-    int arr[SIZE];
-    int n;
+    int a[3];
     int sum = 0;
-    double average;
 
-    cout << "Enter the number of elements (1 to " << SIZE << "): ";
-    cin >> n;
-
-    if (n <= 0 || n > SIZE)
+    for (int i = 0; i < 3; i++)
     {
-        cout << "Invalid number of elements." << endl;
-        return 1;
+        cout << "Enter 3 numbers: ";
+        cin >> a[i];
+        sum += a[i];
     }
 
-    // Input array elements
-    cout << "Enter " << n << " integers:" << endl;
-    for (int i = 0; i < n; ++i)
-    {
-        cout << "Element " << i + 1 << ": ";
-        cin >> arr[i];
-        sum += arr[i];
-    }
+    float avg = sum / 3.0;
 
-    // Calculate average
-    average = static_cast<double>(sum) / n;
-
-    // Output results
-    cout << "\nSum = " << sum << endl;
-    cout << "Average = " << average << endl;
+    cout << "Sum = " << sum << endl;
+    cout << "Average = " << avg << endl;
 
     return 0;
 }

@@ -1,82 +1,90 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 // Base class
 class Person
 {
-protected:
+public:
     string name;
     int age;
 
-public:
-    void setPersonInfo(string n, int a)
+    // Method to input person details
+    void getPersonDetails()
     {
-        name = n;
-        age = a;
+        cout << "Enter name: ";
+        cin >> name;
+        cout << "Enter age: ";
+        cin >> age;
     }
 
-    void displayPersonInfo() const
+    // Method to display person details
+    void displayPerson()
     {
-        cout << "Name: " << name << endl;
-        cout << "Age: " << age << endl;
+        cout << "Name: " << name << ", Age: " << age << endl;
     }
 };
 
-// Derived class Student
+// Derived class for Students
 class Student : public Person
 {
-private:
-    string studentID;
-
 public:
-    void setStudentInfo(string n, int a, string id)
+    string grade;
+
+    // Method to input student details
+    void getStudentDetails()
     {
-        setPersonInfo(n, a); // Reuse base class function
-        studentID = id;
+        getPersonDetails(); // Reusing the base class method
+        cout << "Enter grade: ";
+        cin >> grade;
     }
 
-    void displayStudentInfo() const
+    // Method to display student details
+    void displayStudent()
     {
-        displayPersonInfo(); // Reuse base class function
-        cout << "Student ID: " << studentID << endl;
+        displayPerson(); // Reusing the base class method
+        cout << "Grade: " << grade << endl;
     }
 };
 
-// Derived class Teacher
+// Derived class for Teachers
 class Teacher : public Person
 {
-private:
+public:
     string subject;
 
-public:
-    void setTeacherInfo(string n, int a, string sub)
+    // Method to input teacher details
+    void getTeacherDetails()
     {
-        setPersonInfo(n, a); // Reuse base class function
-        subject = sub;
+        getPersonDetails(); // Reusing the base class method
+        cout << "Enter subject: ";
+        cin >> subject;
     }
 
-    void displayTeacherInfo() const
+    // Method to display teacher details
+    void displayTeacher()
     {
-        displayPersonInfo(); // Reuse base class function
+        displayPerson(); // Reusing the base class method
         cout << "Subject: " << subject << endl;
     }
 };
 
 int main()
 {
-    // Create a Student object
-    Student student;
-    student.setStudentInfo("Alice", 20, "S12345");
-    cout << "Student Info:" << endl;
-    student.displayStudentInfo();
+    Student student1;
+    Teacher teacher1;
 
-    cout << endl;
+    cout << "=== Student Details ===" << endl;
+    student1.getStudentDetails();
+    cout << endl
+         << "=== Student Information ===" << endl;
+    student1.displayStudent();
 
-    // Create a Teacher object
-    Teacher teacher;
-    teacher.setTeacherInfo("Mr. Smith", 40, "Mathematics");
-    cout << "Teacher Info:" << endl;
-    teacher.displayTeacherInfo();
+    cout << "\n=== Teacher Details ===" << endl;
+    teacher1.getTeacherDetails();
+    cout << endl
+         << "=== Teacher Information ===" << endl;
+    teacher1.displayTeacher();
 
     return 0;
 }

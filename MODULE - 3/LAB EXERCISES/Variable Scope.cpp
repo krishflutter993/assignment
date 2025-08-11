@@ -1,25 +1,16 @@
 #include <iostream>
 using namespace std;
+int x = 10;
 
-int gVar = 10;
-
-void difarns()
+void test()
 {
-
-    int lVar = 5;
-
-    cout << "Inside function:" << endl;
-    cout << "Global variable: " << gVar << endl;
-    cout << "Local variable: " << lVar << endl;
+    int y = 5;
+    cout << "Local y = " << y << endl;
 }
-
 int main()
 {
+    cout << "Global x = " << x << endl;
 
-    difarns();
-
-    cout << "In main function:" << endl;
-    cout << "Global variable: " << gVar << endl;
-
+    test();
     return 0;
 }
