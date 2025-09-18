@@ -7,9 +7,9 @@ int main()
     int secretNumber, guess, attempts = 0;
     int maxAttempts = 7;
 
-    // Seed the random number generator
+    
     srand(time(0));
-    secretNumber = rand() % 100 + 1; // Random number between 1 and 100
+    secretNumber = rand() % 100 + 1; 
 
     printf("🎮 Welcome to the Number Guessing Game!\n");
     printf("Guess the number between 1 and 100. You have %d attempts.\n\n", maxAttempts);

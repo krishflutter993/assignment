@@ -22,31 +22,31 @@ int main()
         printf("%d ", arr[i]);
     }
 
-    int matrix[3][3], sum = 0;
+    // int matrix[3][3], sum = 0;
 
-    printf("\n\nEnter 9 integers for 3x3 matrix:\n");
+    // printf("\n\nEnter 9 integers for 3x3 matrix:\n");
 
-    for (i = 0; i < 3; i++)
-    {
-        for (j = 0; j < 3; j++)
-        {
-            printf("Element [%d][%d]: ", i, j);
-            scanf("%d", &matrix[i][j]);
-            sum += matrix[i][j];
-        }
-    }
+    // for (i = 0; i < 3; i++)
+    // {
+    //     for (j = 0; j < 3; j++)
+    //     {
+    //         printf("Element [%d][%d]: ", i, j);
+    //         scanf("%d", &matrix[i][j]);
+    //         sum += matrix[i][j];
+    //     }
+    // }
 
-    printf("\nThe 3x3 matrix is:\n");
-    for (i = 0; i < 3; i++)
-    {
-        for (j = 0; j < 3; j++)
-        {
-            printf("%d\t", matrix[i][j]);
-        }
-        printf("\n");
-    }
+    // printf("\nThe 3x3 matrix is:\n");
+    // for (i = 0; i < 3; i++)
+    // {
+    //     for (j = 0; j < 3; j++)
+    //     {
+    //         printf("%d\t", matrix[i][j]);
+    //     }
+    //     printf("\n");
+    // }
 
-    printf("\nSum of all elements in 3x3 matrix = %d\n", sum);
+    // printf("\nSum of all elements in 3x3 matrix = %d\n", sum);
 
     return 0;
 }
